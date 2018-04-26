@@ -2,22 +2,92 @@
 layout: default
 ---
 
-<div class="home">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Webpage</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+  <script>
+    function myFunction() {
+      document.getElementById('Querida').innerHTML = "<h1>She is the love of my life</h1>";
+      var c = document.querySelector('h1');
+      c.style.color = "pink";
+      console.log(document);
+    }
+  </script>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand">IMG</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-nav-demo">
+          <ul class="nav navbar-nav">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Sign Up</a></li>
+            <li><a href="#" onclick="myFunction()">Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-  <h1 class="page-heading">Posts</h1>
+    <div class ="container">
+      <div id="Querida" class="jumbotron">
+        <h1>Mi Querida Puchunguita</h1>
+        <p>Karen Yulissa Beza Alarcon de Lopez</p>
+      </div>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="thumbnail">
+            <img src="IMG_0705.jpg">
+          </div>        
+        </div>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+        <div class="col-lg-4 col-md-6">
+          <div class="thumbnail">
+            <img src="IMG_0708.jpg">
+          </div>
+        </div>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+        <div class="col-lg-4 col-md-6">
+          <div class="thumbnail">
+            <img src="IMG_0710.jpg">
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="thumbnail">
+            <img src="IMG_0716.jpg">
+          </div>        
+        </div>
 
-</div>
+        <div class="col-lg-4 col-md-6">
+          <div class="thumbnail">
+            <img src="5.jpg">
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="thumbnail">
+            <img src="6.jpg">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+</body>
+</html>

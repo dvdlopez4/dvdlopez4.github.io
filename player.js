@@ -4,6 +4,7 @@ const Player = function () {
     this.position = [0,0];
     this.velocity = [5,0];
     this.Size = [50,50];
+    this.Color = "#ff0000";
 
     this.update = function(time) {
         time /= 1000

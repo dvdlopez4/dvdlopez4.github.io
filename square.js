@@ -5,6 +5,9 @@ const Square = function (x,y) {
     this.rate = Math.random();
     this.position = [x - this.Size[0] / 2, y - this.Size[1] / 2];
     this.velocity = [Math.round(Math.random() * 10), Math.round(Math.random() * -25)];
+    this.Color = "rgb(" + Math.round(Math.random() * 255) + ", " + 
+                        Math.round(Math.random() * 255) + ", " + 
+                        Math.round(Math.random() * 255) + ")"; 
 
     this.update = function(time) {
         time /= 1000;

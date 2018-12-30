@@ -21,12 +21,27 @@ window.addEventListener("load", function(event) {
         if (accumulatedTime >= timeStep * 3) {
             accumulatedTime = timeStep;
         }
-
+        var squares = [];
         while(accumulatedTime >= timeStep) {
             accumulatedTime -= timeStep;
             for (var i = 0; i < objects.length; i++) {
                 objects[i].update(timeStep);
+                if(objects[i].constructor == Rocket) {
+                    if(objects[i].Explode) {
+                        for(var x = 0; x < 5; ++x) {
+                            squares.push(new Square(objects[i].position[0], objects[i].position[1]));
+                        }
+                        objects.push(new Explosion(objects[i].position[0], objects[i].position[1]));
+                        objects.splice(i,1);
+                    }
+                }
+                if(objects[i].constructor == Explosion) {
+                    if(objects[i].isDead) {
+                        objects.splice(i,1);
+                    }
+                }
             }
+            objects = objects.concat(squares);
             updated = true;
         }
 
@@ -38,20 +53,9 @@ window.addEventListener("load", function(event) {
         window.requestAnimationFrame(run);
     }
 
-    canvas.addEventListener("mousemove", function(e) {
-        p1.position[0] = e.offsetX - p1.Size[0] / 2;
-        p1.position[1] = e.offsetY - p1.Size[1] / 2;
-    });
 
     canvas.addEventListener("click", function(e) {
-        var squares = [];
-        for(var i = 0; i < 5; ++i) {
-            squares.push(new Square(e.offsetX, e.offsetY))
-        }
-        if (objects.length > 1000) {
-            objects.splice(1,5);
-        }
-        objects = objects.concat(squares);
+        objects.push(new Rocket(e.offsetX, e.offsetY));
     });
     window.requestAnimationFrame(run);
 })

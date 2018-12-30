@@ -15,8 +15,15 @@ const Display = function (canvas) {
         this.buffer.fillRect(0,0,this.buffer.canvas.width,this.context.canvas.height);
 
         for (var i = objects.length - 1; i >= 0; i--) {
-            this.buffer.fillStyle = objects[i].Color;
-            this.buffer.fillRect(objects[i].position[0], objects[i].position[1], objects[i].Size[0], objects[i].Size[1]);
+            if(objects[i].constructor == Explosion) {
+                this.buffer.strokeStyle = objects[i].Color;
+                this.buffer.beginPath();
+                this.buffer.arc(objects[i].x, objects[i].y, objects[i].radius, objects[i].startAngle, objects[i].endAngle, 0);
+                this.buffer.stroke();
+            } else {
+                this.buffer.fillStyle = objects[i].Color;
+                this.buffer.fillRect(objects[i].position[0], objects[i].position[1], objects[i].Size[0], objects[i].Size[1]);
+            }
         }
         
         this.context.drawImage(this.buffer.canvas, 0, 0, this.buffer.canvas.width, this.buffer.canvas.height);

@@ -14,7 +14,7 @@ const Player = function () {
         this.position[0] = Math.round(this.position[0]);
         this.position[1] = Math.round(this.position[1]);
         this.velocity[0] *= 0.20;
-        this.velocity[1] *= 0.20;
-        // this.velocity[1] += 5 * time;
+        // this.velocity[1] *= 0.20;
+        this.velocity[1] += 5 * time;
     }
 };

@@ -6,7 +6,7 @@ const Display = function (canvas) {
     this.context = canvas.getContext("2d");
 
     this.buffer.canvas.width = this.context.canvas.width = 640;
-    this.buffer.canvas.height = this.context.canvas.height = 480;
+    this.buffer.canvas.height = this.context.canvas.height = 700;
 
     this.render = function(objects) {
         this.context.clearRect(0,0,this.context.canvas.width,this.context.canvas.height);

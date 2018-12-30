@@ -14,6 +14,6 @@ const Explosion = function (x,y) {
         if (this.radius > 65) {
             this.isDead = true;
         }
-        this.radius += 2;
+        this.radius += 10;
     }
 };

@@ -6,7 +6,7 @@ const EnemyMissile = function (width, height) {
     this.dest = [Math.round(Math.random() * width), height];
     var vx = (this.dest[0] - this.position[0]) / 100;
     var vy = height / 100;
-    this.velocity = [vx, vy];
+    this.velocity = [vx, 0];
     this.Color = "#ffffff";
     this.isDead = false;
 
@@ -16,6 +16,7 @@ const EnemyMissile = function (width, height) {
         this.position[1] += this.velocity[1];
         this.position[0] = Math.round(this.position[0]);
         this.position[1] = Math.round(this.position[1]);
+        this.velocity[1] += 3;
         if(this.position[1] > 700) {
             this.isDead = true;
         }

@@ -1,16 +1,18 @@
 
 
-const Rocket = function (x,y) {
+const Rocket = function (x,y, gfx = undefined) {
+    GameObject.call(this, gfx);
     this.Size = [10,10];
-    this.position = [320 - this.Size[1] / 2,700 - this.Size[1]];
+    // Starting position is at the middle and bottom of the canvas
+    this.position = [320 - this.Size[1] / 2, 500 - this.Size[1]];
     
-    var a = 25 * 0.03333;
-    var vy = (-a - Math.sqrt(a*a - 4*a*(y - this.position[1]))) / 2;
-    var n = (-vy * 1.4) / a;
+    // Calculate the velocity vector that will peak at the mouse position
+    var a = 25 * 0.01666;
+    var vy = (-a - Math.sqrt(Math.pow(a,2) - 4*a*(y - this.position[1]))) / 2;
+    var n = (-vy * 1.35) / a;
+    this.velocity = [(x - this.position[0]) / n, vy * 1.35];
 
-    this.velocity = [(x - this.position[0]) / n, vy * 1.4];
     this.Color = "#ff0000";
-    this.Explode = false;
 
     this.update = function(time) {
         time /= 1000
@@ -18,10 +20,11 @@ const Rocket = function (x,y) {
         this.position[1] += this.velocity[1];
         this.position[0] = Math.round(this.position[0]);
         this.position[1] = Math.round(this.position[1]);
-        // this.velocity[0] *= 0.85;
+
         this.velocity[1] += 25 * time;
-        if(this.velocity[1] > 0 && this.Explode == false) {
-            this.Explode = true;
+        // At the height of the trajectory turn on the isDead flag
+        if(this.velocity[1] > 0 && this.isDead == false) {
+            this.isDead = true;
         }
     }
 };

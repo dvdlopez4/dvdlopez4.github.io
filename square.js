@@ -1,10 +1,11 @@
 
 
-const Square = function (x,y) {
+const Square = function (x,y,gfx) {
+    GameObject.call(this, gfx);
     this.Size = [10,10];
     this.rate = Math.random();
     this.position = [x - this.Size[0] / 2, y - this.Size[1] / 2];
-    this.velocity = [Math.round(Math.random() * 10), Math.round(Math.random() * -25)];
+    this.velocity = [Math.round(Math.random() * 10), Math.round(Math.random() * -10)];
     this.velocity[0] *= Math.random() < 0.5 ? -1 : 1;
     this.Color = "rgb(" + Math.round(Math.random() * 255) + ", " + 
                         Math.round(Math.random() * 255) + ", " + 

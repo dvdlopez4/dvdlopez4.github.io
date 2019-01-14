@@ -30,5 +30,6 @@ const Rocket = function (x,y,xi,yi, gfx = undefined) {
 
     this.death = function(objects) {
         objects.push(new Explosion(this.position[0], this.position[1], new ExplosionGraphics()));
+        for(var i = 0; i < 5; ++i) objects.push(new HomingMissile(this.position[0], this.position[1], new Graphics()));
     }
 };

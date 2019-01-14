@@ -1,10 +1,9 @@
 
 
 const Graphics = function () {
-
     this.render = function(object, buffer) {
         buffer.fillStyle = object.Color;
-        buffer.fillRect(object.position[0], object.position[1], object.Size[0], object.Size[1]);
+        buffer.fillRect(object.position[0],object.position[1], object.Size[0], object.Size[1]);
     }
 };
 

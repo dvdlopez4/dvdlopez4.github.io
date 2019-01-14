@@ -29,23 +29,16 @@ const Game = function (width = 640, height = 480) {
         while(this.accumulatedTime >= this.timeStep) {
             this.accumulatedTime -= this.timeStep;
             for (var i = 0; i < this.objects.length; i++) {
-                this.objects[i].update(this.timeStep);
+                this.objects[i].update(this.timeStep, this.objects);
             }
-            var particles = [];
             for (var i = 0; i < this.objects.length; i++) {
                 if(this.objects[i].isDead) {
-                    if(this.objects[i].constructor == Rocket) {
-                        this.objects.push(new Explosion(this.objects[i].position[0], this.objects[i].position[1], new ExplosionGraphics()))
-                    } else if(this.objects[i].constructor == EnemyMissile) {
-                        for (var p = 0; p < 5; p++) {
-                            particles.push(new Square(this.objects[i].position[0], this.objects[i].position[1], new Graphics()));
-                        }
-                    }
+                    if (this.objects[i].death != null) this.objects[i].death(this.objects);
                     this.objects.splice(i,1);
                 }
             }
-            this.objects = this.objects.concat(particles);
-            if(Math.random() < 0.0) {
+
+            if(Math.random() < 0.02) {
                 this.objects.push(new EnemyMissile(this.w, this.h, new Graphics()));
             }
             this.updated = true;

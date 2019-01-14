@@ -10,4 +10,6 @@ const GameObject = function (gfx = undefined) {
     this.render = function(buffer) {
         if(this.graphics) { this.graphics.render(this, buffer); }
     }
+
+    this.death = null;
 };

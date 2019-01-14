@@ -3,59 +3,44 @@
 <head>
     <title>My Webpage</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="game.css">
 </head>
 <body>
-  <script>
-    function myFunction() {
-      document.getElementById('Querida').innerHTML = "<h1>She is the love of my life</h1>";
-      var c = document.querySelector('h1');
-      c.style.color = "pink";
-      console.log(document);
-    }
-  </script>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="#" class="navbar-brand">IMG</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-nav-demo">
-          <ul class="nav navbar-nav">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Sign Up</a></li>
-            <li><a href="#" onclick="myFunction()">Login</a></li>
-          </ul>
-        </div>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="index.html" class="navbar-brand">Home</a>
       </div>
-    </nav>
-
-    <div class ="container">
-      <div id="Querida" class="jumbotron">
-        <h1>Mi Querida Puchunguita</h1>
-        <p>Karen Yulissa Beza Alarcon de Lopez</p>
+      <div class="collapse navbar-collapse" id="bs-nav-demo">
+        <ul class="nav navbar-nav">
+          <li><a href="#">Contact</a></li>
+          <li class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
+              Games
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="game.html">Game 1</a></li>
+              <li><a href="game2.html">Game 2</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
-
-          <canvas></canvas>
-
     </div>
-    <script type="text/javascript" src="display.js"></script>
-    <script type="text/javascript" src="rocket.js"></script>
-    <script type="text/javascript" src="gameObject.js"></script>
-    <script type="text/javascript" src="enemyMissile.js"></script>
-    <script type="text/javascript" src="explosion.js"></script>
-    <script type="text/javascript" src="square.js"></script>
-    <script type="text/javascript" src="graphics.js"></script>
-    <script type="text/javascript" src="game.js"></script>
-    <script type="text/javascript" src="main.js"></script>
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  </nav>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1>David Lopez</h1>
+        <p>Software Developer</p>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 </body>
 </html>

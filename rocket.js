@@ -20,7 +20,7 @@ const Rocket = function (x,y, gfx = undefined) {
 
     this.death = function(objects) {
         // objects.push(new Explosion(this.position.x, this.position.y, new ExplosionGraphics()));
-        for(var i = 0; i < 1; ++i) objects.push(new HomingMissile(this.position.x, this.position.y, new Graphics()));
+        for(var i = 0; i < 4; ++i) objects.push(new HomingMissile(this.position.x, this.position.y, new Graphics()));
     }
 
     this.initialPosition = function(x, y) {

@@ -28,7 +28,6 @@ const HomingMissile = function (x,y,gfx) {
                             break;
                         }
                     }
-                    this.isDead = true;
                 } else {
                     this.Standby--;
                 }
@@ -64,6 +63,5 @@ const HomingMissile = function (x,y,gfx) {
 
     this.death = function(objects) {
         objects.push(new Explosion(this.position.x, this.position.y, new ExplosionGraphics()));
-        objects.push(new HomingMissile(this.position.x, this.position.y, new Graphics()));
     }
 };

@@ -12,6 +12,7 @@ const HomingMissile = function (x,y,gfx) {
     this.life = 300;
     this.Standby = 50;
     this.Color = "#00ff00";
+    this.rate = 0;
 
     this.update = function(time, objects) {
         time /= 1000;
@@ -55,10 +56,15 @@ const HomingMissile = function (x,y,gfx) {
         this.position = this.position.add(this.velocity);
 
         this.acceleration = this.acceleration.mult(0);
+        if(this.rate >= 0.03) {
+            this.rate = 0;
+            objects.push(new GhostParticle(this.position.x, this.position.y, new Graphics()));
+        }
         if(this.life < 0) {
             this.isDead = true;
         }
         this.life--;
+        this.rate += time;
     }
 
     this.death = function(objects) {

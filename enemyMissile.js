@@ -12,6 +12,7 @@ const EnemyMissile = function (width, height, gfx) {
     vy /= normal;
     this.velocity.set(vx, vy);
     this.Color = "#ffffff";
+    this.rate = 0;
 
     this.update = function(time, objects) {
         time /= 1000
@@ -20,6 +21,12 @@ const EnemyMissile = function (width, height, gfx) {
         if(this.position.y > this.dest.y) {
             this.isDead = true;
         }
+        if(this.rate >= 0.03) {
+            this.rate = 0;
+            objects.push(new GhostParticle(this.position.x, this.position.y, new Graphics()));
+        }
+
+        this.rate += time;
     }
 
     this.death = function(objects) {

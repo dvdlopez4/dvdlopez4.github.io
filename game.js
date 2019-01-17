@@ -11,6 +11,9 @@ const Game = function (width = 640, height = 480) {
     this.h = height
     this.score = 0;
     this.gameTime = undefined;
+    this.fired = false;
+    this.rechargeRate = 750;
+    this.rockets = 20;
 
     this.init = function() {
         var canvas = document.querySelector("canvas");
@@ -27,7 +30,13 @@ const Game = function (width = 640, height = 480) {
         if (this.accumulatedTime >= this.timeStep * 3) {
             this.accumulatedTime = this.timeStep;
         }
-
+        if (this.fired) {
+            this.rechargeRate -= this.timeStep;
+            if (this.rechargeRate <= 0) {
+                this.fired = false;
+                this.rechargeRate = 750;
+            }
+        }
         if (this.gameTime != 0) {
             while(this.accumulatedTime >= this.timeStep) {
                 this.accumulatedTime -= this.timeStep;
@@ -61,13 +70,18 @@ const Game = function (width = 640, height = 480) {
             buffer.font = '48px serif';
             buffer.fillText(this.score, 10, 50);
             if (this.gameTime != 0) {
-                this.gameTime = Math.round(60 - this.time / 1000);
+                this.gameTime = Math.round(60 - this.time / 750);
                 buffer.fillText(this.gameTime, this.w / 2 - 24, 50);
             } else {
                 buffer.fillText("Game!", this.w / 2 - 48, this.h / 2);
             }
             buffer.fillStyle = "#444444";
             buffer.fillRect(0, this.h * 5 / 6, this.w, this.h);
+            buffer.fillStyle = "#33aa33";
+            buffer.fillRect(this.w / 2 - 80, this.h * 5 / 6 + 20, 160 * (this.fired ? (1 - this.rechargeRate / 750) : 1),40);
+            buffer.strokeStyle = "#ffffff";
+            buffer.strokeRect(this.w / 2 - 80, this.h * 5 / 6 + 20, 160, 40);
+            // buffer.fillText("Rocket count: " + this.rockets, this.w * 2 / 3, this.h * 5 / 6);
             this.display.update();
             this.updated = false;
         }

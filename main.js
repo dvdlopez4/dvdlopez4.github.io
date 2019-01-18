@@ -17,13 +17,13 @@ window.addEventListener("load", function(event) {
     });
 
     canvas.addEventListener("click", function(e) {
-        if (!game.fired && game.rockets > 0) {
+        if (!game.fired) {
             var dims = game.display.getDimensions();
             var rocket = new Rocket(e.offsetX, e.offsetY, new Graphics());
+            rocket.level = game.level;
             rocket.initialPosition(dims[0] / 2, dims[1]);
             game.objects.push(rocket);
             game.fired = true;
-            // game.rockets--;
         }
         
     });

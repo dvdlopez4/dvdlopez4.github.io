@@ -17,9 +17,10 @@ const Explosion = function (x,y, gfx = undefined) {
         var missiles = objects.filter(obj => obj.constructor == EnemyMissile);
         for (var i = 0; i < missiles.length; i++) {
             var distance = this.position.distanceTo(missiles[i].position);
-            if(distance < this.radius) {
-                missiles[i].isDead = true;
-                this.killCount += 1;
+            if(distance < this.radius && !missiles[i].invincible) {
+                missiles[i].health -= 1;
+                missiles[i].invincible = true;
+                if (missiles[i].health <= 0) this.killCount += 1;
             }
         }
         this.radius += 3;

@@ -6,6 +6,7 @@ const Rocket = function (x,y, gfx = undefined) {
     this.peak = new Vector2(x, y);
     this.Color = "rgba(255,0,0,0.5)";
     this.acceleration = new Vector2(0,25);
+    this.level = 1;
 
     this.update = function(time, objects) {
         time /= 1000
@@ -19,8 +20,14 @@ const Rocket = function (x,y, gfx = undefined) {
     }
 
     this.death = function(objects) {
-        // objects.push(new Explosion(this.position.x, this.position.y, new ExplosionGraphics()));
-        for(var i = 0; i < 4; ++i) objects.push(new HomingMissile(this.position.x, this.position.y, new Graphics()));
+        if (this.level > 2) {
+            objects.push(new Explosion(this.position.x + 40, this.position.y, new ExplosionGraphics()));
+            objects.push(new Explosion(this.position.x - 40, this.position.y, new ExplosionGraphics()));
+        }
+        if (this.level > 1) {
+            for(var i = 0; i < this.level - 1; ++i) objects.push(new HomingMissile(this.position.x, this.position.y, new Graphics()));
+        }
+        objects.push(new Explosion(this.position.x, this.position.y, new ExplosionGraphics()));
     }
 
     this.initialPosition = function(x, y) {

@@ -12,7 +12,7 @@ const Game = function (width = 640, height = 480) {
     this.score = 0;
     this.gameTime = undefined;
     this.fired = false;
-    this.rechargeRate = 750;
+    this.rechargeRate = 250;
     this.level = 1;
     this.experience = 100;
     this.currentExp = 0;
@@ -42,7 +42,7 @@ const Game = function (width = 640, height = 480) {
             this.rechargeRate -= this.timeStep;
             if (this.rechargeRate <= 0) {
                 this.fired = false;
-                this.rechargeRate = 750;
+                this.rechargeRate = 250;
             }
         }
         if (this.health > 0) {
@@ -100,7 +100,7 @@ const Game = function (width = 640, height = 480) {
             buffer.fillStyle = "#444444";
             buffer.fillRect(0, this.h * 5 / 6, this.w, this.h);
             buffer.fillStyle = "#33aa33";
-            buffer.fillRect(this.w / 2 - 80, this.h * 5 / 6 + 20, 160 * (this.fired ? (1 - this.rechargeRate / 750) : 1),40);
+            buffer.fillRect(this.w / 2 - 80, this.h * 5 / 6 + 20, 160 * (this.fired ? (1 - this.rechargeRate / 250) : 1),40);
             buffer.strokeStyle = "#ffffff";
             buffer.strokeRect(this.w / 2 - 80, this.h * 5 / 6 + 20, 160, 40);
 
